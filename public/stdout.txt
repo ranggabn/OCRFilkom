@@ -1,0 +1,13 @@
+Mefadata Extraction
+
+O Ran enhanced meladala exlraclion on 619 images (users
+plugins for ﬁwalk developed during research)
+
+0 Performed analysis on 49,724 ﬁles within images
+
+I Successfully idenliﬁed 43,729 ﬁles (147 unique ﬁle types)
+againsl PRONOM formal regislry
+
+0 Identiﬁed 9 ﬁles as conlaining virus signalures (2 unique
+virus signaIures)
+
