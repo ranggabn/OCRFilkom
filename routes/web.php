@@ -18,5 +18,3 @@ Route::get('/', function() {
 });
 
 Route::get('pdf-to-images', 'PDFController@index');
-
-Route::get('image-to-txt', 'ImgController@index');

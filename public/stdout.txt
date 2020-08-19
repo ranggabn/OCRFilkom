@@ -1,13 +1,8 @@
-Mefadata Extraction
+1. Almonds
 
-O Ran enhanced meladala exlraclion on 619 images (users
-plugins for ﬁwalk developed during research)
-
-0 Performed analysis on 49,724 ﬁles within images
-
-I Successfully idenliﬁed 43,729 ﬁles (147 unique ﬁle types)
-againsl PRONOM formal regislry
-
-0 Identiﬁed 9 ﬁles as conlaining virus signalures (2 unique
-virus signaIures)
+There are a lot ofliealth beneﬁts associated with almonds.
+Almonds are Very high in vitamin E and protein as well as
+other nutrients such as maylesillm and pllospllorlls. Almonds
+contain anti-cancer properties as well. Whether almonds are
+best raw or pasteurized is still a source oflieated debate.
 
