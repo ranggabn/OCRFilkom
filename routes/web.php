@@ -13,8 +13,12 @@ use Illuminate\Support\Facades\Route;
 |
 */
 
-Route::get('/', function() {
+/*Route::get('/', function() {
     return view('index');
-});
+});*/
 
-Route::get('pdf-to-images', 'PDFController@index');
+Route::get('/', 'UploadController@index');
+
+Route::get('/about', 'UploadController@create');
+
+Route::post('/', 'UploadController@uploadFile')->name('uploadFile');

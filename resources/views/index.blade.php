@@ -6,24 +6,22 @@
 <div class="container">
     <div class="row">
         <div class="col-10">
-            <div class="input-group mb-3 mt-5">
-                <div class="custom-file">
-                    <input type="file" class="custom-file-input" id="inputGroupFile02">
-                    <label class="custom-file-label" for="inputGroupFile02" aria-describedby="inputGroupFileAddon02">Choose file</label>
-                </div>
-            <div class="input-group-append">
-                <span class="input-group-text" id="inputGroupFileAddon02">Upload</span>
+        <form method="POST" action="" enctype="multipart/form-data" name="uploadForm">
+            <div class="form-group mt-5">
+                <label for="upload">Masukkan Dokumen Kerjasama (PDF File)</label>
+                <input type="file" class="form-control-file" id="uploadPDF" name="uploadPDF">
             </div>
-        </div>
+            <button type="submit" class="btn btn-primary">Upload</button>
+        </form>
 
         <form>
             <div class="form-group mt-5">
-                <label for="exampleInputEmail1">Nama</label>
-                <input type="email" class="form-control" id="exampleInputEmail1" aria-describedby="emailHelp">
+                <label for="inputNama1">Nama</label>
+                <input type="text" class="form-control" id="inputNama1">
             </div>
             <div class="form-group">
-                <label for="exampleInputPassword1">Jenis Kerjasama</label>
-                <input type="password" class="form-control" id="exampleInputPassword1">
+                <label for="inputJenis">Jenis Kerjasama</label>
+                <input type="text" class="form-control" id="InputJenis">
             </div>
             <div class="form-group form-check">
                 <input type="checkbox" class="form-check-input" id="exampleCheck1">

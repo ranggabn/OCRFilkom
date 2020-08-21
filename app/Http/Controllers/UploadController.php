@@ -1,28 +1,34 @@
 <?php
 
 namespace App\Http\Controllers;
+use App\Http\Controllers\Controller;
 use Spatie\PdfToImage\Pdf;
 use Org_Heigl\Ghostscript\Ghostscript;
 use thiagoalessio\TesseractOCR\TesseractOCR;
 use Illuminate\Http\Request;
 
-class PDFController extends Controller{
+class UploadController extends Controller{
     public function index()
     {
-        $pdf_file = public_path() . "\pdf\\file.pdf";
-        $output_path = public_path() . "\images\\foto2.png";
+        return view('index');
+    }
+
+    public function create()
+    {
+        $pdf_file = storage_path("");
+        $output_path = "\images\\foto2.png";
         
         Ghostscript::setGsPath("C:\Program Files\gs\gs9.52\bin\gswin64c.exe");
         $pdf = new Pdf($pdf_file);
         $pdf->setOutputFormat('png')->saveImage($output_path);
 
-        $tesseract = new TesseractOCR(public_path("\images\\foto2.png"));
+        $tesseract = new TesseractOCR(public_path($output_path));
         $text =  $tesseract->run();
         echo $text;
     }
-
-    public function create()
+    public function uploadFile(Request $req)
     {
-        return view('index');
+        $pdfs = $req->file('uploadPDF')->store('public');
+        return "File has been uploaded successfully!";
     }
 }
