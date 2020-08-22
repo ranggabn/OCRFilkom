@@ -6,7 +6,8 @@
 <div class="container">
     <div class="row">
         <div class="col-10">
-        <form method="POST" action="" enctype="multipart/form-data" name="uploadForm">
+        <form method="POST" action="/upload" enctype="multipart/form-data" name="uploadForm">
+        {{ csrf_field() }}
             <div class="form-group mt-5">
                 <label for="upload">Masukkan Dokumen Kerjasama (PDF File)</label>
                 <input type="file" class="form-control-file" id="uploadPDF" name="uploadPDF">
