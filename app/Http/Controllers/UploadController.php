@@ -46,10 +46,10 @@ class UploadController extends Controller
     }
     public function getData($txt){
         // print $txt;
-        if (preg_match("/berkedudukan di\s (.*?) \,/", $txt, $matches5)) {
+        if (preg_match("/berkedudukan di\s+(\w*(?:\W*\w)*)\W*selanjutnya disebut sebagaj PIHAK\W*KESATU/", $txt, $matches5)) {
             echo $matches5[1]."<br />"; 
         }
-        if (preg_match("/dengan\s(.*?)\s/", $txt, $matches1)) {
+        if (preg_match("/dengan\s+(\w*(?:\W*\w)*)\W*Nomor:/", $txt, $matches1)) {
             echo $matches1[1]."<br />"; 
         }
         if (preg_match("/Nomur:\s(.*?)\sdengan/", $txt, $matches2)) {
