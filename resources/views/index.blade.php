@@ -1,6 +1,6 @@
 @extends('layout/main')
 
-@section('title', 'Web Programming')
+@section('title', 'ARSIP FILKOM')
 
 @section('container')
 <div class="container">
@@ -15,20 +15,44 @@
             <button type="submit" class="btn btn-primary">Upload</button>
         </form>
 
-        <form>
+        <form method="GET" action="/getData" name="getForm">
             <div class="form-group mt-5">
-                <label for="inputNama1">Nama</label>
-                <input type="text" class="form-control" id="inputNama1">
-            </div>
-            <div class="form-group">
-                <label for="inputJenis">Jenis Kerjasama</label>
-                <input type="text" class="form-control" id="InputJenis">
-            </div>
-            <div class="form-group form-check">
-                <input type="checkbox" class="form-check-input" id="exampleCheck1">
-                <label class="form-check-label" for="exampleCheck1">Check me out</label>
-            </div>
-            <button type="submit" class="btn btn-primary">Submit</button>
+                    <label for="inputMitra">Mitra Kerjasama</label>
+                    <input type="text" class="form-control" id="inputMitra" placeholder="Mitra Kerjasama">
+                </div>
+                <div class="form-group">
+                    <label for="mouFilkom">Nomor MOU</label>
+                    <input type="text" class="form-control" id="mouFilkom" placeholder="Nomor MOU Filkom">
+                    <input type="text" class="form-control mt-2" id="mouMitra" placeholder="Nomor MOU Mitra Kerjasama">
+                </div>
+                <div class="form-group">
+                    <label for="tanggalMou">Tanggal MOU</label>
+                    <input type="text" class="form-control" id="tglMulai" placeholder="Tanggal Mulai">
+                    <input type="text" class="form-control mt-2" id="tglSelesai" placeholder="Tanggal Selesai">
+                    <input type="text" class="form-control mt-2" id="jangkaWaktu" placeholder="Tanggal Jangka Waktu">
+                </div>
+                <div class="form-group">
+                    <label for="bidangKerja">Bidang Kerjasama</label>
+                    <input type="text" class="form-control" id="bidangKerja" placeholder="Bidang Kerja Sama">
+                </div>
+                <div class="form-group">
+                    <label for="biaya">Biaya</label>
+                    <input type="text" class="form-control" id="biaya" placeholder="Biaya">
+                </div>
+                <div class="form-group">
+                    <label for="contact">Contact Person</label>
+                    <input type="text" class="form-control" id="contactFilkom" placeholder="FILKOM UB">
+                    <input type="text" class="form-control mt-2" id="contactMitra" placeholder="Mitra Kerja Sama">
+                </div>
+                <div class="form-group">
+                    <label for="alamatMitra">Alamat Mitra</label>
+                    <input type="text" class="form-control" id="alamatMitra" placeholder="MOU">
+                </div>
+                <div class="form-group">
+                    <label for="tindakLanjut">Tindak Lanjut MOU</label>
+                    <input type="text" class="form-control" id="tindakLanjut" placeholder="Tindak Lanjut MOU">
+                </div>
+            <button type="submit" class="btn btn-primary mt-2 mb-5">Submit</button>
         </form>
     </div>
 </div>

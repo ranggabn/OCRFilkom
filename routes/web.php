@@ -19,7 +19,7 @@ use Illuminate\Support\Facades\Route;
 
 Route::get('/', 'UploadController@index');
 
-// Route::get('/about', 'UploadController@create');
+Route::get('/getData', 'UploadController@getData');
 Route::post('/upload', 'UploadController@create');
 
 Route::post('/', 'UploadController@uploadFile')->name('uploadFile');

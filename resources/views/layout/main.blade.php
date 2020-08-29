@@ -20,8 +20,6 @@
     <div class="collapse navbar-collapse" id="navbarNavAltMarkup">
         <div class="navbar-nav">
         <a class="nav-link active" href="/">Home</a>
-        <a class="nav-link" href="/about">About</a>
-        <a class="nav-link" href="/mahasiswa">Mahasiswa</a>
         </div>
     </div>
     </div>

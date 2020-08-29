@@ -7,6 +7,10 @@ use Spatie\PdfToImage\Pdf;
 use Org_Heigl\Ghostscript\Ghostscript;
 use thiagoalessio\TesseractOCR\TesseractOCR;
 use Illuminate\Http\Request;
+use PhpParser\Node\Expr\Print_;
+use Spatie\Regex\Regex;
+
+use function _\find;
 
 class UploadController extends Controller
 {
@@ -34,9 +38,28 @@ class UploadController extends Controller
                 array_push($sorted,$file);
             }
         }
-        foreach($sorted as $text){
-            $tesseract = new TesseractOCR(storage_path("app/images/").$text);
-            print($tesseract->run());
+        foreach($sorted as $images){
+            $tesseract = new TesseractOCR(storage_path("app/images/").$images);
+            $txt = $tesseract->run();
+            $this->getData($txt);
+        }
+    }
+    public function getData($txt){
+        // print $txt;
+        if (preg_match("/berkedudukan di\s (.*?) \,/", $txt, $matches5)) {
+            echo $matches5[1]."<br />"; 
+        }
+        if (preg_match("/dengan\s(.*?)\s/", $txt, $matches1)) {
+            echo $matches1[1]."<br />"; 
+        }
+        if (preg_match("/Nomur:\s(.*?)\sdengan/", $txt, $matches2)) {
+            echo $matches2[1]."<br />"; 
+        }
+        if (preg_match("/Nomor:\s(.*?)\;/", $txt, $matches3)) {
+            echo $matches3[1]."<br />"; 
+        }
+        if (preg_match("/penyelenggaraan\s(.*)\:/", $txt, $matches4)) {
+            echo $matches4[1]."<br />"; 
         }
     }
 }
