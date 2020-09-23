@@ -1,5 +1,6 @@
 <?php
 
+use App\Http\Controllers\UploadController;
 use Illuminate\Support\Facades\Route;
 
 /*
@@ -17,9 +18,8 @@ use Illuminate\Support\Facades\Route;
     return view('index');
 });*/
 
-Route::get('/', 'UploadController@index');
+Route::get('/', 'UploadController@mou');
+Route::get('/moa', 'UploadController2@moa');
 
-Route::get('/getData', 'UploadController@getData');
 Route::post('/upload', 'UploadController@create');
-
-Route::post('/', 'UploadController@uploadFile')->name('uploadFile');
+Route::post('/upload2', 'UploadController2@create2');

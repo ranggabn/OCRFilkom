@@ -19,7 +19,8 @@
     </button>
     <div class="collapse navbar-collapse" id="navbarNavAltMarkup">
         <div class="navbar-nav">
-        <a class="nav-link active" href="/">Home</a>
+        <a class="nav-link active" href="/">MOU <span class="sr-only">(current)</span></a>
+        <a class="nav-link" href="/moa">MOA</a>
         </div>
     </div>
     </div>

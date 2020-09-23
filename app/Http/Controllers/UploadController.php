@@ -7,16 +7,12 @@ use Spatie\PdfToImage\Pdf;
 use Org_Heigl\Ghostscript\Ghostscript;
 use thiagoalessio\TesseractOCR\TesseractOCR;
 use Illuminate\Http\Request;
-use PhpParser\Node\Expr\Print_;
-use Spatie\Regex\Regex;
-
-use function _\find;
 
 class UploadController extends Controller
 {
-    public function index()
+    public function mou()
     {
-        return view('index');
+        return view('mou');
     }
 
     public function create(Request $request)
@@ -38,28 +34,35 @@ class UploadController extends Controller
                 array_push($sorted,$file);
             }
         }
+        $inputMitra = "";
+        $no1 = "";
+        $no2 = "";
+        $jenis = "";
+        $alamat = "";
         foreach($sorted as $images){
             $tesseract = new TesseractOCR(storage_path("app/images/").$images);
             $txt = $tesseract->run();
-            $this->getData($txt);
-        }
-    }
-    public function getData($txt){
-        // print $txt;
-        if (preg_match("/berkedudukan di\s+(\w*(?:\W*\w)*)\W*selanjutnya disebut sebagaj PIHAK\W*KESATU/", $txt, $matches5)) {
-            echo $matches5[1]."<br />"; 
-        }
-        if (preg_match("/dengan\s+(\w*(?:\W*\w)*)\W*Nomor:/", $txt, $matches1)) {
-            echo $matches1[1]."<br />"; 
-        }
-        if (preg_match("/Nomur:\s(.*?)\sdengan/", $txt, $matches2)) {
-            echo $matches2[1]."<br />"; 
-        }
-        if (preg_match("/Nomor:\s(.*?)\;/", $txt, $matches3)) {
-            echo $matches3[1]."<br />"; 
-        }
-        if (preg_match("/penyelenggaraan\s(.*)\:/", $txt, $matches4)) {
-            echo $matches4[1]."<br />"; 
-        }
+            if (preg_match("/dengan\s+(\w*(?:\W*\w)*)\W*Nomor:/", $txt, $matches1)) {
+                $inputMitra = $matches1[1];
+            }
+            if (preg_match("/Nomor:\s(.*?)\sdengan/", $txt, $matches2)) {
+                $no1 = $matches2[1];
+            }else if (preg_match("/Nomur:\s(.*?)\sdengan/", $txt, $matches2)) {
+                $no1 = $matches2[1];
+            }
+            if (preg_match("/Nomor\W*(.*?)\;/", $txt, $matches3)) {                
+                $no2 = $matches3[1];
+            }
+            if (preg_match("/penyelenggaraan\s(.*)\:/", $txt, $matches4)) {
+                $jenis = $matches4[1];                
+            }else if (preg_match("/penyelenggaraan\s(.*)\;/", $txt, $matches4)) {
+                $jenis = $matches4[1];
+            }if (preg_match("/berkedudukan di\s+(\w*(?:\W*\w)*)\W*selanjutnya disebut sebagai PIHAK\W*KESATU/", $txt, $matches5)) {
+                $alamat = $matches5[1];
+            }else if (preg_match("/berkedudukan di\s+(\w*(?:\W*\w)*)\W*selanjutnya disebut sebagaj PIHAK\W*KESATU/", $txt, $matches5)) {
+                $alamat = $matches5[1];
+            }
+        }       
+        return view('mou', compact('inputMitra', 'no1', 'no2', 'jenis', 'alamat'));
     }
 }
