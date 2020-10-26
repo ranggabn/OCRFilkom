@@ -41,6 +41,10 @@ class UploadController extends Controller
         $no1 = "";
         $no2 = "";
         $jenis = "";
+        $tanggal = " ";
+        $bulan = " ";
+        $tahun = " ";
+        $jangka = " ";
         $alamat = "";
         $tr = new GoogleTranslate();
         $wordToNumber = new WordToNumber();
@@ -48,7 +52,6 @@ class UploadController extends Controller
         foreach($sorted as $images){
             $tesseract = new TesseractOCR(storage_path("app/images/").$images);
             $txt = $tesseract->run();
-            // print $txt;
             if (preg_match("/dengan\s+(\w*(?:\W*\w)*)\W*Nomor:/", $txt, $matches1)) {
                 $inputMitra = $matches1[1];
             }
@@ -85,7 +88,9 @@ class UploadController extends Controller
             }
         }
         $tahunSelesai = $tahun + $jangka;
-        return view('mou', compact('inputMitra', 'no1', 'no2', 'tanggal', 'bulan', 'tahunSelesai', 'tahun', 'jangka', 'jenis', 'alamat'));
+        $spasi = " ";
+        $add = "tahun";
+        return view('mou', compact('inputMitra', 'add', 'spasi', 'no1', 'no2', 'tanggal', 'bulan', 'tahunSelesai', 'tahun', 'jangka', 'jenis', 'alamat'));
     }
 
     public function save(Request $request)
@@ -99,8 +104,6 @@ class UploadController extends Controller
         $form->tanggal_jangka = $request->jangkaWaktu;
         $form->bidang = $request->bidangKerja;
         $form->biaya = $request->biaya;
-        $form->cp_filkom = $request->contactFilkom;
-        $form->cp_mitra = $request->contactMitra;
         $form->alamat = $request->alamatMitra;
         $form->tindak_lanjut = $request->tindakLanjut;
         $form->save();

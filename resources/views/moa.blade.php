@@ -19,9 +19,9 @@
         <form method="POST" action="submit2" name="FormMOA">
                 <div class="form-group mt-5">
                     <label for="tanggalMoa">Tanggal PKS MOA</label>
-                    <input type="text" class="form-control" name="tglMulai" id="tglMulai" placeholder="Tanggal PKS Mulai" value="{{ isset($tanggal) ? $tanggal : '' }}{{ isset($bulan) ? $bulan : '' }}{{ isset($tahun) ? $tahun : '' }}">
-                    <input type="text" class="form-control mt-2" name="tglSelesai" id="tglSelesai" placeholder="Tanggal PKS Selesai" value="{{ isset($tanggal) ? $tanggal : '' }}{{ isset($bulan) ? $bulan : '' }}{{ isset($tahunSelesai) ? $tahunSelesai : '' }}">
-                    <input type="text" class="form-control mt-2" name="jangkaWaktu" id="jangkaWaktu" placeholder="Jangka Waktu PKS" value="{{ isset($jangka) ? $jangka : '' }}">
+                    <input type="text" class="form-control" name="tglMulai" id="tglMulai" placeholder="Tanggal PKS Mulai" value="{{ isset($tanggal) ? $tanggal : '' }}{{ isset($spasi) ? $spasi : '' }}{{ isset($bulan) ? $bulan : '' }}{{ isset($spasi) ? $spasi : '' }}{{ isset($tahun) ? $tahun : '' }}">
+                    <input type="text" class="form-control mt-2" name="tglSelesai" id="tglSelesai" placeholder="Tanggal PKS Selesai" value="{{ isset($tanggal) ? $tanggal : '' }}{{ isset($spasi) ? $spasi : '' }}{{ isset($bulan) ? $bulan : '' }}{{ isset($spasi) ? $spasi : '' }}{{ isset($tahunSelesai) ? $tahunSelesai : '' }}">
+                    <input type="text" class="form-control mt-2" name="jangkaWaktu" id="jangkaWaktu" placeholder="Jangka Waktu PKS" value="{{ isset($jangka) ? $jangka : '' }}{{ isset($spasi) ? $spasi : '' }}{{ isset($add) ? $add : '' }}">
                 </div>
                 <div class="form-group">
                     <label for="noPks">Nomor PKS MOA</label>
@@ -42,8 +42,8 @@
                 </div>
                 <div class="form-group">
                     <label for="contact">Contact Person</label>
-                    <input type="text" class="form-control" name="contactFilkom" id="contactFilkom" placeholder="FILKOM UB">
-                    <input type="text" class="form-control mt-2" name="contactMitra" id="contactMitra" placeholder="Mitra Kerja Sama">
+                    <input type="text" class="form-control" name="contactFilkom" id="contactFilkom" placeholder="FILKOM UB" value="{{ isset($cp1) ? $cp1 : '' }}">
+                    <input type="text" class="form-control mt-2" name="contactMitra" id="contactMitra" placeholder="Mitra Kerja Sama" value="{{ isset($cp2) ? $cp2 : '' }}">
                 </div>
                 <div class="form-group">
                     <label for="alamatMitra">Alamat Mitra</label>

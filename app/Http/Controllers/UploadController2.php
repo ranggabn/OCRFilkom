@@ -30,13 +30,13 @@ class UploadController2 extends Controller
         $no2 = "";
         $jangka = "";
         $subBidang = "";
-        $alamat = "";    
+        $alamat = "";
+        $cp1 = " " ;
+        $cp2 = " ";
         $tr = new GoogleTranslate();
         $wordToNumber = new WordToNumber();
         $wordTransformer = $wordToNumber->getWordTransformer('en');
-        print $teks;
         if (preg_match("/tanggal\s(.*?)\sbulan/", $teks, $matches6)) {
-            // $tanggal = $matches6[1];
             $date = $tr->setSource()->setTarget('en')->translate($matches6[1]);
             $tanggal = $wordTransformer->toNumber($date);
         }
@@ -44,11 +44,16 @@ class UploadController2 extends Controller
             $bulan = $tr->setSource()->setTarget('en')->translate($matches7[1]);
         }else if (preg_match("/bulan\s(.*?)\stahgn/", $teks, $matches7)){
             $bulan = $tr->setSource()->setTarget('en')->translate($matches7[1]);
+        }else if (preg_match("/bulan\s(.*?)\sTahun/", $teks, $matches7)) {
+            $bulan = $tr->setSource()->setTarget('en')->translate($matches7[1]);
         }
         if (preg_match("/tahun\s(.*?)\sdi/", $teks, $matches8)) {
             $year = $tr->setSource()->setTarget('en')->translate($matches8[1]);
             $tahun = $wordTransformer->toNumber($year);
         }else if (preg_match("/tahgn\s(.*?)\sdi/", $teks, $matches8)){
+            $year = $tr->setSource()->setTarget('en')->translate($matches8[1]);
+            $tahun = $wordTransformer->toNumber($year);
+        }else if (preg_match("/Tahun\s+(\w*(?:\W*\w)*)\W*di Malang/", $teks, $matches8)){
             $year = $tr->setSource()->setTarget('en')->translate($matches8[1]);
             $tahun = $wordTransformer->toNumber($year);
         }
@@ -67,13 +72,21 @@ class UploadController2 extends Controller
         if (preg_match("/Penyelenggaraan\s(.*)\,/", $teks, $matches3)) {
             $subBidang = $matches3[1];                
         }
+        if (preg_match("/Telpon\W*(\w*(?:\W*\w*))\W*Faksimili/", $teks, $matches10)) {
+            $cp1 = $matches10[1];
+        }
+        if (preg_match("/Telpon\W*\w*(?:\W*\w)*\W*Telpon\W*(\w*(?:\W*\w)*)\W*Faksimili/", $teks, $matches11)) {
+            $cp2 = $matches11[1];
+        }   
         if (preg_match("/berkedudukan di\s\w*(?:\W*\w)*\W*berkedudukan di\s+(\w*(?:\W*\w)*)\W*selanjutnya disebut sebagai PIHAK\W*KEDUA/", $teks, $matches4)) {
             $alamat = $matches4[1];
         }else if (preg_match("/berkedudukan di\s\w*(?:\W*\w)*\W*berkedudukan di\s+(\w*(?:\W*\w)*)\W*selanjutnya\W*disebut sebagai PIHAK\W*KEDUA/", $teks, $matches4)) {
             $alamat = $matches4[1];
         }
         $tahunSelesai = $tahun + $jangka;
-        return view('moa', compact('tanggal', 'bulan', 'tahun', 'tahunSelesai', 'no1', 'no2', 'jangka', 'subBidang', 'alamat'));
+        $spasi = " ";
+        $add = "tahun";
+        return view('moa', compact('cp1', 'cp2', 'tahunSelesai', 'spasi', 'add', 'tanggal', 'bulan', 'tahun', 'no1', 'no2', 'jangka', 'subBidang', 'alamat'));
     }
     public function save(Request $request)
     {
@@ -85,6 +98,8 @@ class UploadController2 extends Controller
         $form->pks_mitra = $request->pksMitra;
         $form->bidang = $request->bidangKerja;
         $form->sub_bidang = $request->subBidang;
+        $form->cp_filkom = $request->contactFilkom;
+        $form->cp_mitra = $request->contactMitra;
         $form->alamat = $request->alamatMitra;
         $form->tindak_lanjut = $request->tindakLanjut;
         $form->save();

@@ -29,9 +29,9 @@
                 </div>
                 <div class="form-group">
                     <label for="tanggalMou">Tanggal MOU</label>
-                    <input type="text" class="form-control" name="tglMulai" id="tglMulai" placeholder="Tanggal Mulai" value="{{ isset($tanggal ) ? $tanggal : '' }}{{ isset($bulan ) ? $bulan : '' }}{{ isset($tahun ) ? $tahun : '' }}">
-                    <input type="text" class="form-control mt-2" name="tglSelesai" id="tglSelesai" placeholder="Tanggal Selesai" value="{{ isset($tanggal) ? $tanggal ' ' : '' }}{{ isset($bulan) ? $bulan : '' }}{{ isset($tahunSelesai) ? $tahunSelesai : '' }}">
-                    <input type="text" class="form-control mt-2" name="jangkaWaktu" id="jangkaWaktu" placeholder="Jangka Waktu" value="{{ isset($jangka) ? $jangka : '' }}">
+                    <input type="text" class="form-control" name="tglMulai" id="tglMulai" placeholder="Tanggal Mulai" value="{{ isset($tanggal) ? $tanggal : '' }}{{ isset($spasi) ? $spasi : '' }}{{ isset($bulan) ? $bulan : '' }}{{ isset($spasi) ? $spasi : '' }}{{ isset($tahun) ? $tahun : '' }}">
+                    <input type="text" class="form-control mt-2" name="tglSelesai" id="tglSelesai" placeholder="Tanggal Selesai" value="{{ isset($tanggal) ? $tanggal : '' }}{{ isset($spasi) ? $spasi : '' }}{{ isset($bulan) ? $bulan : '' }}{{ isset($spasi) ? $spasi : '' }}{{ isset($tahunSelesai) ? $tahunSelesai : '' }}">
+                    <input type="text" class="form-control mt-2" name="jangkaWaktu" id="jangkaWaktu" placeholder="Jangka Waktu" value="{{ isset($jangka) ? $jangka : '' }}{{ isset($spasi) ? $spasi : '' }}{{ isset($add) ? $add : '' }}">
                 </div>
                 <div class="form-group">
                     <label for="bidangKerja">Bidang Kerjasama</label>
