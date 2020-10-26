@@ -3,6 +3,9 @@
 namespace App\Http\Controllers;
 
 use App\Http\Controllers\Controller;
+use App\form;
+use Djunehor\Number\WordToNumber;
+use Stichoza\GoogleTranslate\GoogleTranslate;
 use Spatie\PdfToImage\Pdf;
 use Org_Heigl\Ghostscript\Ghostscript;
 use thiagoalessio\TesseractOCR\TesseractOCR;
@@ -39,9 +42,13 @@ class UploadController extends Controller
         $no2 = "";
         $jenis = "";
         $alamat = "";
+        $tr = new GoogleTranslate();
+        $wordToNumber = new WordToNumber();
+        $wordTransformer = $wordToNumber->getWordTransformer('en');        
         foreach($sorted as $images){
             $tesseract = new TesseractOCR(storage_path("app/images/").$images);
             $txt = $tesseract->run();
+            // print $txt;
             if (preg_match("/dengan\s+(\w*(?:\W*\w)*)\W*Nomor:/", $txt, $matches1)) {
                 $inputMitra = $matches1[1];
             }
@@ -53,6 +60,20 @@ class UploadController extends Controller
             if (preg_match("/Nomor\W*(.*?)\;/", $txt, $matches3)) {                
                 $no2 = $matches3[1];
             }
+            if (preg_match("/tanggal\s+(\w*(?:\W*\w)*)\W*, bulan/", $txt, $matches6)) {
+                $date = $tr->setSource()->setTarget('en')->translate($matches6[1]);
+                $tanggal = $wordTransformer->toNumber($date);
+            }
+            if (preg_match("/bulan\s+(\w*(?:\W*\w)*)\W*, tahun/", $txt, $matches7)) {
+                $bulan = $tr->setSource()->setTarget('en')->translate($matches7[1]);
+            }
+            if (preg_match("/tahun\s+(\w*(?:\W*\w)*)\W*, bertempat/", $txt, $matches8)) {
+                $year = $tr->setSource()->setTarget('en')->translate($matches8[1]);
+                $tahun = $wordTransformer->toNumber($year);
+            }
+            if (preg_match("/dengan\s(.*?)\s\W/", $txt, $matches9)) { 
+                $jangka = $matches9[1];
+            }
             if (preg_match("/penyelenggaraan\s(.*)\:/", $txt, $matches4)) {
                 $jenis = $matches4[1];                
             }else if (preg_match("/penyelenggaraan\s(.*)\;/", $txt, $matches4)) {
@@ -62,7 +83,27 @@ class UploadController extends Controller
             }else if (preg_match("/berkedudukan di\s+(\w*(?:\W*\w)*)\W*selanjutnya disebut sebagaj PIHAK\W*KESATU/", $txt, $matches5)) {
                 $alamat = $matches5[1];
             }
-        }       
-        return view('mou', compact('inputMitra', 'no1', 'no2', 'jenis', 'alamat'));
+        }
+        $tahunSelesai = $tahun + $jangka;
+        return view('mou', compact('inputMitra', 'no1', 'no2', 'tanggal', 'bulan', 'tahunSelesai', 'tahun', 'jangka', 'jenis', 'alamat'));
+    }
+
+    public function save(Request $request)
+    {
+        $form = new form;
+        $form->mitra_kerjasama = $request->inputMitra;
+        $form->mou_filkom = $request->mouFilkom;
+        $form->mou_mitra = $request->mouMitra;
+        $form->tanggal_mulai = $request->tglMulai;
+        $form->tanggal_selesai = $request->tglSelesai;
+        $form->tanggal_jangka = $request->jangkaWaktu;
+        $form->bidang = $request->bidangKerja;
+        $form->biaya = $request->biaya;
+        $form->cp_filkom = $request->contactFilkom;
+        $form->cp_mitra = $request->contactMitra;
+        $form->alamat = $request->alamatMitra;
+        $form->tindak_lanjut = $request->tindakLanjut;
+        $form->save();
+        return view ('mou');
     }
 }

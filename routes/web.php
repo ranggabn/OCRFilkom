@@ -1,6 +1,7 @@
 <?php
 
 use App\Http\Controllers\UploadController;
+use Hamcrest\Text\SubstringMatcher;
 use Illuminate\Support\Facades\Route;
 
 /*
@@ -23,3 +24,5 @@ Route::get('/moa', 'UploadController2@moa');
 
 Route::post('/upload', 'UploadController@create');
 Route::post('/upload2', 'UploadController2@create2');
+Route::post('/submit', 'UploadController@save');
+Route::post('/submit2', 'UploadController2@save');
