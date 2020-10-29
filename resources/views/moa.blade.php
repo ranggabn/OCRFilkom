@@ -10,7 +10,6 @@
         {{ csrf_field() }}
             <div class="form-group mt-5">
                 <label for="upload">Masukkan Dokumen Kerjasama MOA(PDF File)</label>
-                <p>[Ukuran File Maksimal 2 MB]</p>
                 <input type="file" class="form-control-file" id="uploadPDF" name="uploadPDF">
             </div>
             <button type="submit" class="btn btn-primary">Upload</button>
@@ -29,7 +28,7 @@
                     <input type="text" class="form-control mt-2" name="pksMitra" id="pksMitra" placeholder="Nomor PKS Mitra Kerjasama" value="{{ isset($no2) ? $no2 : '' }}">
                 </div>
                 <label for="bidangKerja">Bidang Kerjasama</label>
-                <select id="bidangKerja" class="form-control">                    
+                <select name="bidangKerja" id="bidangKerja" class="form-control">                    
                     <option value="" disabled selected>Bidang Kerjasama</option>
                     <option>Default select</option>
                     <option>Default select</option>

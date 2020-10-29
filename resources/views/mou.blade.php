@@ -10,7 +10,6 @@
         {{ csrf_field() }}
             <div class="form-group mt-5">
                 <label for="upload">Masukkan Dokumen Kerjasama MOU(PDF File)</label>
-                <p>[Ukuran File Maksimal 2 MB]</p>
                 <input type="file" class="form-control-file" id="uploadPDF" name="uploadPDF">
             </div>
             <button type="submit" class="btn btn-primary">Upload</button>
@@ -43,7 +42,7 @@
                 </div>
                 <div class="form-group">
                     <label for="alamatMitra">Alamat Mitra</label>
-                    <input type="text" class="form-control" name="alamatMitra" id="alamatMitra" placeholder="MOU" value="{{ isset($alamat) ? $alamat : '' }}">
+                    <input type="text" class="form-control" name="alamatMitra" id="alamatMitra" placeholder="Alamat" value="{{ isset($alamat) ? $alamat : '' }}">
                 </div>
                 <div class="form-group">
                     <label for="tindakLanjut">Tindak Lanjut MOU</label>
