@@ -19,7 +19,8 @@ use Illuminate\Support\Facades\Route;
     return view('index');
 });*/
 
-Route::get('/', 'UploadController@mou');
+Route::get('/', 'IndexController@index');
+Route::get('/mou', 'UploadController@mou');
 Route::get('/moa', 'UploadController2@moa');
 
 Route::post('/upload', 'UploadController@create');
