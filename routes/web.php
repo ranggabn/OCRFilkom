@@ -23,7 +23,10 @@ Route::get('/', 'IndexController@index');
 Route::get('/mou', 'UploadController@mou');
 Route::get('/moa', 'UploadController2@moa');
 
-Route::post('/upload', 'UploadController@create');
-Route::post('/upload2', 'UploadController2@create2');
+Route::post('upload', 'UploadController@create')->name('upload');
+Route::post('upload2', 'UploadController2@create2')->name('upload2');
 Route::post('/submit', 'UploadController@save');
 Route::post('/submit2', 'UploadController2@save');
+
+// Route::get('file-upload', 'FileController@fileUpload');
+// Route::post('file-upload', 'FileController@fileUploadPost')->name('fileUploadPost');

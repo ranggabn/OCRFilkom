@@ -8,6 +8,7 @@
     <p class=" text-center lead">FAKULTAS ILMU KOMPUTER</p>
     <hr class="my-3">
 </div>
+
 <div class="container">
   <div class="row justify-content-center">
     <div class="col-4 d-flex justify-content-center text-center">
@@ -19,7 +20,7 @@
                     <div class="media-body"> 
                         <p class="mb-0 text-monospace text-left">UNTUK BEKERJA SAMA DENGAN FAKULTAS ILMU KOMPUTER MELALUI MOU SILAHKAN MENGISI FORMULIR YANG DISEDIAKAN</p>
                     </div>
-                </div>
+                </div>            
                 <a href="/mou" class="btn btn-outline-secondary mt-3">ISI FORMULIR</a>
             </div>
         </div>
@@ -31,7 +32,7 @@
                 <div class="media">
                 <img src="{{ URL::to('/asset/img/form.png') }}" class="align-self-center mr-3" alt="...">
                     <div class="media-body"> 
-                        <p class="mb-0 text-monospace text-left">UNTUK BEKERJA SAMA DENGAN FAKULTAS ILMU KOMPUTER MELALUI MOU SILAHKAN MENGISI FORMULIR YANG DISEDIAKAN</p>
+                        <p class="mb-0 text-monospace text-left">UNTUK BEKERJA SAMA DENGAN FAKULTAS ILMU KOMPUTER MELALUI MOA SILAHKAN MENGISI FORMULIR YANG DISEDIAKAN</p>
                     </div>
                 </div>
                 <a href="/moa" class="btn btn-outline-secondary mt-3">ISI FORMULIR</a>
@@ -40,6 +41,5 @@
     </div>
   </div>
 </div>
-
 
 @endsection
